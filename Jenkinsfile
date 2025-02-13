@@ -2,7 +2,8 @@ pipeline {
     agent any
 
     environment {
-        // Define environment variables if needed
+        MAVEN_HOME = 'C:/Users/Wissen/apache-maven-3.9.9/bin' // Example of setting a Maven home environment variable
+        JAVA_HOME = 'C:/Program Files/Java/jdk-17' // Example of setting a Java home environment variable
     }
 
     stages {
