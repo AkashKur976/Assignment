@@ -1,61 +1,37 @@
 pipeline {
     agent any
 
-    environment {
-        MAVEN_HOME = 'C:/Users/Wissen/apache-maven-3.9.9/bin' // Example of setting a Maven home environment variable
-        JAVA_HOME = 'C:/Program Files/Java/jdk-17' // Example of setting a Java home environment variable
-    }
-
     stages {
         stage('Checkout') {
             steps {
-                // Checkout the code from GitHub repository
+                // Checkout the code from Git repository
                 git 'https://github.com/AkashKur976/Assignment.git'
             }
         }
 
         stage('Compile') {
             steps {
-                // Compile the project using Maven
-                sh 'mvn clean compile'
+                // Compile the Java code (assuming 'CalculatorMain.java' is in the 'src' folder)
+                sh 'javac CalculatorMain.java'
             }
         }
 
-        stage('Test') {
+        stage('Run') {
             steps {
-                // Run unit tests using Maven
-                sh 'mvn test'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                // Build the project into a JAR file using Maven
-                sh 'mvn package'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                // Deploy the application (optional, can be customized)
-                echo 'Deploying the application...'
+                // Run the CalculatorMain class after compilation
+                sh 'java -cp CalculatorMain'
             }
         }
     }
 
     post {
         always {
-            // Clean up resources or perform any post-build actions
             echo 'Cleaning up after the build...'
         }
-
         success {
-            // Actions to take on successful build
-            echo 'Build Successful!'
+            echo 'Build Successful and Program Ran!'
         }
-
         failure {
-            // Actions to take on failed build
             echo 'Build Failed!'
         }
     }
