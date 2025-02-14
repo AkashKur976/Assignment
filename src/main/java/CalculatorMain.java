@@ -5,7 +5,10 @@ class Calc{
 	}
 }
 public class CalculatorMain {
-	Calc c1 = new Calc();
-	int a = c1.add(3,4);
-	System.out.println("Result a : "+ a);
+	public static void main(String args[]) {
+		Calc c1 = new Calc();
+		int a = c1.add(3,4);
+		System.out.print(a);
+
+	}
 }
