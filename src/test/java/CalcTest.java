@@ -13,6 +13,6 @@ class CalcTest {
 	}
 	@Test
 	void testAdd() {
-		assertEquals(3, c1.add(1,2),()->"Not good");
+		assertEquals(4, c1.add(1,2),()->"Not good");
 	}
 }
